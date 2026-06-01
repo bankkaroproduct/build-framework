@@ -46,7 +46,7 @@ Every feature branch gets its own preview URL automatically (Vercel/Netlify do t
 Production is the URL your real users hit. Rules:
 - **Never automatic.** No tool ships to production on its own initiative.
 - You say "yes, deploy to production" explicitly, *after* Verify passed on the preview.
-- Production deploy happens by merging your tested branch into `main` (which triggers the hosting to update production).
+- Production deploy usually happens by merging your tested branch into your production branch (commonly `main`), which triggers the hosting to update production — but confirm your actual trigger below.
 
 ### Know your actual deploy trigger ("main ≠ production" check)
 The "merge to `main` → production updates" flow is the common default (Vercel/Netlify), but **don't assume it** — confirm how *your* project actually ships before you rely on it. Ask your AI, in plain English: *"When I merge to main, does that automatically deploy to real users, or is there another step?"* Some setups deploy from a different branch, need a manual "promote to production" click, or deploy by a separate process entirely. If you don't know your real trigger, you can ship by accident — or think you shipped when you didn't. Write the answer in `AGENTS.md` so every session knows it.
@@ -61,7 +61,7 @@ Before you say "yes, ship to production":
 - [ ] If it touches the database structure, there's a backup
 - [ ] Environment variables that production needs are set in the hosting dashboard (a feature that works on preview but forgets a prod env var will break on production)
 - [ ] If real user data is involved, login/permissions actually work
-- [ ] **You'll find out if it breaks** — basic error tracking is installed (e.g. Sentry) so production errors reach you, not just the user. And no personal data is written into logs.
+- [ ] **You'll find out if it breaks** — basic error tracking is installed (e.g. Sentry) so production errors reach you, not just the user; confirm the alerts actually land somewhere *you* see (email/Slack), not a dashboard nobody opens. And no personal data is written into logs.
 
 The most common "works on preview, broken on production" cause is a **missing environment variable in production**. Preview and production have separate env var settings in your hosting dashboard. When you add a new secret, add it to both.
 

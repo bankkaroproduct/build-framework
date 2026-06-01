@@ -67,6 +67,7 @@ See `references/03-verification-shipping.md`.
 You may not be launching to 10,000 users today. "Production-grade" isn't about scale — it's about **not building a mess you have to throw away.** An app is production-grade when:
 
 - the repo is understandable and the setup is reproducible (someone else could run it),
+- it builds cleanly and any basic checks it has (lint/typecheck) are green before you ship — you don't need a full test pipeline, but "the build is broken" is never production-grade,
 - environment variables are documented (`.env.example` exists),
 - there's a clear data model and a rollback path,
 - errors are visible (you find out it broke before a user tells you),

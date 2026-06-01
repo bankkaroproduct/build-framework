@@ -6,7 +6,7 @@
 
 - **Name:** _<fill in>_
 - **What it is (1–2 sentences):** _<fill in — what it does, who uses it>_
-- **Real-data or Demo:** _<Real users/data — full rigor | Demo — throwaway data>_  (if unsure → Real)
+- **Real-data or Demo:** _<Real — full rigor | Demo — throwaway data>_  (Real if it touches real data, real company infra, or real external APIs — even with no public users yet. If unsure → Real.)
 - **Hosting:** _<e.g. Vercel>_
 - **Database:** _<e.g. Supabase / Neon / none>_
 
@@ -28,7 +28,7 @@ This project follows the Build Framework. The human directing this work is **non
 8. **New dependencies** → justify before adding a package (needed? maintained? touches secrets/data?). → STOP before casually installing packages.
 9. **Out of depth** (payments, security, hard-to-undo data decisions) → STOP and recommend a human engineer rather than guessing.
 
-**Git habit:** build on a feature branch, test its preview URL, only merge to `main` when verified. `main` is always deployable.
+**Git habit:** build on a feature branch, test its preview URL, only merge to your **production branch (usually `main`)** when verified. That branch is always deployable. (Confirm how this project actually deploys — see `references/03-verification-shipping.md`.)
 
 **Explain in plain English first**, then leave a short technical trail (files changed, commands run + results, deps added, env vars added, migrations, known risks) so a future engineer isn't doing archaeology.
 

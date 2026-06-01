@@ -96,6 +96,7 @@ A reviewer that only says "looks great" isn't reviewing. Push it: "what could go
 You usually won't — one task at a time is simpler and safer. But if you ever have two AI tools building in parallel (say Codex on one feature, Claude Code on another), follow these few rules or they'll overwrite each other:
 
 - **One branch per builder.** Each builder works on its own feature branch, never the same one.
+- **One folder per builder, too.** A separate branch isn't enough if two tools edit the **same project folder on your computer** at once — they'll overwrite each other's uncommitted work. Give each its own checkout (a separate clone of the repo, or a `git worktree`). Same folder + two tools = collision. If that sounds like a hassle, that's the signal to just run **one builder at a time** — which is the simpler, recommended default anyway.
 - **Non-overlapping scope.** Their `allowed_paths` must not overlap. Two builders editing the same file at once = guaranteed conflict. If a file area is contested, only one builder owns it at a time.
 - **One owner per area at a time.** Don't hand the same folder to a second tool until the first has committed and reported.
 - **Commit before handing off.** Never leave uncommitted changes in a shared folder and then point another tool at it — it'll build on a moving target.

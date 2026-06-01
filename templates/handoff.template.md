@@ -2,15 +2,15 @@
 
 > The Planner fills this in and gives it to the Builder. Any coding tool can read it. Keep it short and concrete. Delete these quote-lines before use.
 
-<!--
-MACHINE-READABLE CONTRACT (for the AI Builder — fill this in; it removes ambiguity).
-The prose below restates it for humans. If the two ever disagree, this block wins.
+## AI Contract (fill this in — it's the part the AI must obey)
+
+This block removes ambiguity for the AI Builder. The prose sections below restate it for humans; **if the two ever disagree, this block wins.** Fill in the values and keep it at the top of the handoff.
 
 ```yaml
 role: builder            # builder | reviewer | planner
 work_id: <short-slug>    # e.g. login-reset-v1
 branch: <feature-branch> # the ONLY branch this builder commits to
-base_branch: <e.g. main> # what it branched from
+base_branch: <e.g. main> # what it branched from (your production branch, usually main)
 allowed_paths:           # the ONLY paths this builder may edit
   - <path/glob>
 forbidden_paths:         # never touch, even if it seems helpful
@@ -24,7 +24,6 @@ requires_human_stop:     # pause and ask before doing any of these
   - preview_points_at_prod_data
 verification_required: true   # work is not "done" until verified on the running app
 ```
--->
 
 ## Goal
 <One or two sentences: what to build and why. Plain English.>

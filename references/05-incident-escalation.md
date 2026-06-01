@@ -20,7 +20,7 @@ Work in this order. Don't skip to "fix it" — that's how small problems become 
 ### 3. Fix on a branch, verify, re-ship
 - Fix on a feature branch.
 - Verify on the preview (`03-verification-shipping.md`).
-- Only then merge to `main` for production.
+- Only then merge to your production branch (usually `main`) for production.
 
 ### 4. Write down what happened
 - In your `AGENTS.md` memory section, one line: what broke, why, what fixed it.

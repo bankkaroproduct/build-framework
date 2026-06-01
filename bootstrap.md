@@ -20,9 +20,11 @@ npx degit bankkaroproduct/build-framework/templates ./_framework-templates
 # then move AGENTS.md, CLAUDE.md, env.example out of _framework-templates into your root
 ```
 
-> **Ask your AI version:** *"Pull these three files from the GitHub repo `bankkaroproduct/build-framework` (in its `templates/` folder) into the root of this project: `AGENTS.md`, `CLAUDE.md`, and `env.example` (save the last one as `.env.example`). Don't change their contents."*
+> **Ask your AI version:** *"Pull these files from the GitHub repo `bankkaroproduct/build-framework` (`templates/` folder) into the root of this project: `AGENTS.md`, `CLAUDE.md`, and `env.example` (save the last as `.env.example`). Don't change their contents."*
 
-Or simplest of all: open the `build-framework` repo on GitHub and copy-paste the three files in by hand. Any of these is fine.
+Or simplest of all: open the `build-framework` repo on GitHub and copy-paste the files in by hand. Any of these is fine.
+
+Also grab `templates/checkpoint.md` — you won't fill it yet, but you'll want it once you finish your first milestone (it's how you hand state to a fresh thread when this one gets slow — see `references/08-context-and-thread-management.md`).
 
 ## 3. Fill in `AGENTS.md`
 Open `AGENTS.md` and fill the top section: project name, what it is, **Real-data or Demo** (if unsure → Real), hosting, database. Thirty seconds. Now every AI session knows your project and your rules.

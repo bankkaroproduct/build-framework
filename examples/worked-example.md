@@ -95,3 +95,32 @@ verification_required: true
 4. Only then: "yes, deploy to production."
 
 Notice: a real risk (no rate-limiting) got surfaced and consciously deferred — written down, not forgotten — and production was gated on a human actually using the feature. That's the whole framework in one feature.
+
+---
+
+## The same feature done *wrong* (and how the framework catches it)
+
+Contrast teaches faster than the happy path. Here's the careless version — and the gate that stops each mistake.
+
+**The vague handoff:** *"Add password reset."* No scope, no environment, no acceptance checks, no STOP conditions.
+→ **Caught by:** the handoff template itself. With no `allowed_paths` and no acceptance checks, the Builder has nothing to obey and you have nothing to verify against. A one-line handoff is the first smell.
+
+**Too-wide scope:** the Builder, unbounded, also "improves" the login screen, swaps the session library, and reformats ten files.
+→ **Caught by:** `forbidden_paths` + the "Don't touch" scope. Edits outside the agreed paths trip STOP D. The dependency swap trips STOP G (justify before adding/changing a package).
+
+**Secret in code:** it hardcodes the email API key in `sendReset.ts` to "just get it working."
+→ **Caught by:** Rail 1 / STOP A — and, if you set it up, the secret-scan check (`07-harden-your-repo.md`) *blocks the push outright*. This is exactly why the automatic guard exists: a non-engineer wouldn't spot the key in the diff.
+
+**Preview wired to prod:** to "test with real data," it points the preview at the production database. A test run deletes real accounts.
+→ **Caught by:** Rail 3 / STOP H — preview must use a non-prod database. This is the trap that silently undoes everything; it's a hard STOP for a reason.
+
+**Missing prod env var:** works on preview; the email key was never added to production env vars, so live resets silently fail.
+→ **Caught by:** the pre-production checklist ("env vars production needs are set"). The Reviewer also flags it.
+
+**Rubber-stamp review:** the *same* session that built it reviews it and says "looks good, ship it."
+→ **Caught by:** the review rules — review must be a different/cold-start session, must list what it checked and couldn't, and **defaults to No-Go** for a risky change nobody actually ran. "Looks good" with no evidence is not a review.
+
+**Shipped on AI's say-so:** nobody opened the running app; "done" was taken at face value and it went to production.
+→ **Caught by:** "Done ≠ works," the human Verify gate, and the explicit production "yes." The one check no tool replaces is you, clicking through the live thing.
+
+Every one of these is a normal thing an eager AI (or a rushed human) does. The framework's value is that each has a specific gate in front of it — so the careless version simply can't reach real users without someone tripping a STOP.

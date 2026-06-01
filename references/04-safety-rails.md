@@ -93,6 +93,7 @@ If you can't get a clear "yes" (or a clear plan) for the first three especially,
 The shape of your data is one of the hardest things to change later. Before building, get plain-English answers:
 - What are the core things the app stores (the main "nouns")?
 - Which fields are personal/sensitive (PII)?
+- For each, **who should be able to read and write it?** (This is the same question as the "can User A see User B's data?" security check — answer it now and the permissions fall out.)
 - What should the app **never** store?
 - What would be painful to change after launch?
 

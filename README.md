@@ -56,8 +56,12 @@ examples/
 
 ## The idea in three sentences
 
-You direct, you don't code. Three roles do the work — a **Planner** decides what to build, a **Builder** writes it, and a **Reviewer** (a *different* AI) checks it — and you approve at each gate. Safety rails catch the dangerous moves automatically (secrets, writing to systems you don't own, preview touching production data, ungated production deploys, runaway costs), and nothing reaches real users without your explicit "yes."
+You direct, you don't code. Three roles do the work — a **Planner** decides what to build, a **Builder** writes it, and a **Reviewer** (a different session, even of the same tool) checks it — and you approve at each gate. Safety rails **tell the tools when to stop** before the dangerous moves (secrets, writing to systems you don't own, preview touching production data, ungated production deploys, runaway costs); optional repo guards (secret scanning, branch protection) then *block* the worst mistakes automatically. Nothing reaches real users without your explicit "yes."
 
 ## Who this is for
 
 Anyone building production-grade MVPs with AI tools who isn't a professional engineer — PMs, founders, prototypers graduating from no-code/Lovable to real codebases with their own databases and hosting.
+
+## License
+
+[MIT](./LICENSE) — use it, copy it, adapt it freely.
