@@ -39,12 +39,14 @@ references/
   05-incident-escalation.md   When things break; when to call a human engineer.
   06-existing-project-mode.md  Applying the framework to a repo that already exists.
   07-harden-your-repo.md      Optional automatic guards: secret scanning, branch protection.
+  08-context-and-thread-management.md  When a chat goes slow/stale: fork cleanly, lose nothing.
 templates/
   AGENTS.md                   Drop in your project root. Many AI tools read it automatically.
   CLAUDE.md                   Thin pointer for Claude Code → follows AGENTS.md.
   handoff.template.md         Planner → Builder contract. Has a machine-readable YAML block
                               (role/allowed-paths/stops) so AIs can't interpret creatively.
   review-request.template.md  Builder → Reviewer contract (evidence-based, go/no-go).
+  checkpoint.md               A "where are we now" snapshot so a fresh thread can resume.
   env.example                 The secrets pattern (keys in env vars, never in git).
 examples/
   worked-example.md           One feature, handoff → build → review → ship.

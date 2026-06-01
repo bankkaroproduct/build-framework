@@ -18,9 +18,11 @@ You don't do the coding. You direct it. Think of three jobs — any AI tool can 
 |---|---|---|
 | **Planner** | Decides *what* to build and writes it down clearly before any code is written | You + an AI thinking partner (Claude, ChatGPT) |
 | **Builder** | Reads the plan, writes the code in your project folder, reports what it did | A coding tool that edits local files (Claude Code, Codex, Cursor) |
-| **Reviewer** | Independently checks the Builder's work before it goes live | A *different* AI than the Builder (e.g. ChatGPT + GitHub), or a second agent |
+| **Reviewer** | Independently checks the Builder's work before it goes live | A *different* AI — or, if you use only one tool, a **fresh cold-start session** of the same tool |
 
 **Why separate them?** The Builder is too close to its own work to catch its own mistakes — same reason you don't proofread your own writing well. A separate Reviewer catches things the Builder is blind to. And a written Plan stops the Builder from wandering off and "improving" things you didn't ask for.
+
+**You don't need two tools to do this** — most people use just one (Claude, or Codex). One tool plays Planner and Builder in sequence; for the Reviewer, you open a **fresh "cold-start" session** of the same tool and hand it only the change to check. A session with no memory of building something reviews it honestly instead of defending it. See `TOOL_MATRIX.md`.
 
 The **handoff** (a short markdown file — see `templates/handoff.template.md`) is how the Planner tells the Builder what to do. The **review request** (`templates/review-request.template.md`) is how you ask the Reviewer to check it. Because these are just text files in your project, *any* tool can read them. That's the whole trick to staying tool-agnostic.
 
@@ -99,6 +101,10 @@ These apply at every step, even when you didn't ask and the AI didn't mention th
 There's also one **build-time STOP**: before adding a new software package/dependency, the AI should justify it in plain English (do we need it? is it widely used + maintained? could it touch secrets/data?). AI tools install packages casually; each one is new code you now depend on. See `references/02-orchestration.md`.
 
 ---
+
+## Keep your thread fresh
+
+AI conversations get worse the longer they run — slower, forgetful, more mistake-prone — as the chat fills up its limited memory. This *will* happen on a real build. The fix: **the chat is disposable; your project's real memory lives in files** (`AGENTS.md`, your code, your checkpoint). When a thread goes stale (slow replies, forgetting earlier decisions, repeating itself), start a fresh one and point it at those files — you lose nothing important. Do milestone check-ins *before* a thread fills, so forking is painless. Full playbook: `references/08-context-and-thread-management.md`.
 
 ## The non-negotiable: plain language
 
