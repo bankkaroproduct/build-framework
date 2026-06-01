@@ -17,5 +17,14 @@
 ## What I'm specifically worried about
 <Optional: name your concern, e.g. "this touches login" or "it calls a paid API in a loop".>
 
-## How to respond
-Don't say "looks good." List concrete risks, ranked worst-first, each with where it is and why it matters. If you genuinely find nothing serious, say what you checked so I know the review was real.
+## How to respond (required sections — a review without these is theater)
+Don't say "looks good." Structure your answer as:
+
+1. **What I checked** — the files/flows/claims you actually looked at.
+2. **What I could NOT check** — limits of this review (couldn't run it, no access to X, etc.). Be honest; unchecked ≠ safe.
+3. **Commands / tests I ran** (if any) — and their real results.
+4. **Files changed unexpectedly** — anything touched beyond what the change description implied.
+5. **Risks, worst-first** — each with *where* it is and *why* it matters. Call out anything that should go to a human engineer.
+6. **Go / No-Go** — your recommendation: safe to ship, ship-with-fixes, or do-not-ship.
+
+If you genuinely find nothing serious, still fill in sections 1–4 so it's clear the review was real.

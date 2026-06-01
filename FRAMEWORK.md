@@ -36,7 +36,7 @@ Before anything, answer one question: **does this app touch real users or real d
 - **Real** (logins, customer data, anything personal, anything you'd be embarrassed to leak) → full rigor. Every safety rail below applies.
 - **Demo** (throwaway data, just you, nobody's real info) → lighter; you can move faster.
 
-If you're not sure, treat it as **Real**. See `references/01-project-setup.md`.
+**The sharper rule:** "no public users yet" does **not** mean "safe." If the app touches **real data, real company infrastructure, or real external APIs** — even an internal tool only you use — treat it as **Real**. A private beta with five friends, an admin tool wired to a real database, a prototype already calling a paid API: all **Real**. If you're not sure, it's Real. See `references/01-project-setup.md`.
 
 ### 2. Plan
 Get the AI to write down *what* it's going to build **before** it writes code. A good plan names the smallest useful slice — not the whole dream, just the next shippable piece. Make the AI explain, in plain English, anything that costs money or touches user data. You approve the plan before building starts.
@@ -60,21 +60,43 @@ See `references/03-verification-shipping.md`.
 
 ---
 
+## What "production-grade" actually means
+
+You may not be launching to 10,000 users today. "Production-grade" isn't about scale — it's about **not building a mess you have to throw away.** An app is production-grade when:
+
+- the repo is understandable and the setup is reproducible (someone else could run it),
+- environment variables are documented (`.env.example` exists),
+- there's a clear data model and a rollback path,
+- errors are visible (you find out it broke before a user tells you),
+- no secrets are in the code,
+- known risks and any "we cut this corner for now" shortcuts are written down,
+- it's **handoff-ready** — a real engineer could pick it up later without archaeology.
+
+The goal: build so that going to production *later* is a small step, not a rebuild.
+
+---
+
 ## The always-on safety rails
 
-These apply at every step, even when you didn't ask and the AI didn't mention them. If you've set up your project with the `AGENTS.md` template, your tools already know these. They are **STOP signs** — when one is about to be crossed, work pauses and you get a plain-English heads-up.
+These apply at every step, even when you didn't ask and the AI didn't mention them. If you've set up your project with the `AGENTS.md` template, your tools already know these. They are **STOP signs** — when one is about to be crossed, work pauses and you get a plain-English heads-up. Full detail for every rail is in `references/04-safety-rails.md`.
 
-1. **Secrets never go in code or git.** API keys, passwords, database URLs, tokens → they live in environment variables (your hosting provider's settings), never in a file that gets committed, never in code the browser can see. If an AI is about to paste a key into a file → STOP. See `references/04-safety-rails.md`.
+1. **Secrets never go in code or git.** API keys, passwords, database URLs, tokens → they live in environment variables (your hosting provider's settings), never in a committed file, never in code the browser can see. If an AI is about to paste a key into a file → STOP.
 
-2. **Never write to an API you don't own.** Your app may *read* from other products' APIs as a guest. It must **not** create, change, or delete anything there without explicit human sign-off — by default, read-only. Treat every external API as "look, don't touch." See `references/04-safety-rails.md`.
+2. **Never write to an API you don't own.** Your app may *read* from other people's APIs as a guest, by default read-only. It must **not** create/change/delete anything on a system you don't own without explicit sign-off. (Writing to services *you* own — your email, your payment provider — is fine, but use the safe-write checklist: sandbox keys first, sign-off before going live.)
 
-3. **Back up the database before changing its shape.** Any operation that alters or deletes data (a "migration", a "drop", a "reset") → make a backup first. Data you delete by accident is usually gone for good.
+3. **Preview must never touch production data.** A test/preview deploy is only safe if it points at a **non-production** database and **sandbox** API keys. A preview wired to your real database can delete real data while you think you're "just testing." If a preview must use real data, it's no longer a preview — treat it as Real/Production. → STOP and confirm.
 
-4. **Real user data = auth + privacy hygiene.** If real people log in or you store anything personal, the app needs proper login and you must be careful with that data. If an AI is about to store personal data loosely → it should flag it to you.
+4. **Back up the database before changing its shape.** Any operation that alters or deletes data (a "migration", a "drop", a "reset") → back up first. Data you delete by accident is usually gone for good.
 
-5. **Production deploy = explicit human "yes," every time.** No tool ships to real users on its own.
+5. **Real user data = auth + privacy hygiene.** If real people log in or you store anything personal, the app needs proper login, and one user must never be able to see another user's data. If an AI is about to store/expose personal data loosely → it flags it to you. (PM-readable security checklist in `references/04-safety-rails.md`.)
 
-6. **When something is genuinely risky and you're out of your depth — stop and get a human engineer.** Payments, security, anything involving money or sensitive data, anything where a mistake is expensive and irreversible. The right move is to say "this needs a real engineer," not to wing it. See `references/05-incident-escalation.md`.
+6. **Production deploy = explicit human "yes," every time.** No tool ships to real users on its own.
+
+7. **Watch the bill.** Know what costs money before turning it on; set a hard spending cap + budget alert at setup. AI-built apps can create runaway loops, over-frequent scheduled jobs, and expensive logging. If an AI wires up anything metered → it tells you the cost shape in plain English first.
+
+8. **When something is genuinely risky and you're out of your depth — stop and get a human engineer.** Payments, security, sensitive data, hard-to-undo data-model decisions, anything where a mistake is expensive and irreversible. The right move is "this needs a real engineer," not winging it. See `references/05-incident-escalation.md`.
+
+There's also one **build-time STOP**: before adding a new software package/dependency, the AI should justify it in plain English (do we need it? is it widely used + maintained? could it touch secrets/data?). AI tools install packages casually; each one is new code you now depend on. See `references/02-orchestration.md`.
 
 ---
 

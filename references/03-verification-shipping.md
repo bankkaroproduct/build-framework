@@ -58,6 +58,7 @@ Before you say "yes, ship to production":
 - [ ] If it touches the database structure, there's a backup
 - [ ] Environment variables that production needs are set in the hosting dashboard (a feature that works on preview but forgets a prod env var will break on production)
 - [ ] If real user data is involved, login/permissions actually work
+- [ ] **You'll find out if it breaks** — basic error tracking is installed (e.g. Sentry) so production errors reach you, not just the user. And no personal data is written into logs.
 
 The most common "works on preview, broken on production" cause is a **missing environment variable in production**. Preview and production have separate env var settings in your hosting dashboard. When you add a new secret, add it to both.
 

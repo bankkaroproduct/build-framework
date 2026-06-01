@@ -54,8 +54,19 @@ Put these in every handoff. The Builder must **pause and ask you** — not decid
 - **D** — about to work outside the agreed scope → STOP, report, ask
 - **E** — about to deploy to production (real users) → STOP, get explicit "yes"
 - **F** — hit something genuinely risky or out of depth (security, payments, data model) → STOP, recommend a human engineer
+- **G** — about to add a new software package/dependency → STOP, justify first (see below)
+- **H** — about to point a preview/test environment at the production database or live API keys → STOP
 
 These are not suggestions. A STOP means: pause, explain in plain English, wait for your go.
+
+### Why the dependency gate (G) matters
+AI tools install software packages casually — and every package is new code your app now depends on, that could be unmaintained, bloated, or able to touch your secrets and data. Before adding one, make the Builder answer in plain English:
+- Do we actually need it, or can the existing stack already do this?
+- Is it widely used and actively maintained?
+- Does it run on the server, in the browser, or just at build time?
+- Could it access secrets or user data?
+
+A "yes we need it, it's standard, it's maintained" is fine. Casually pulling in five obscure packages is not.
 
 ---
 

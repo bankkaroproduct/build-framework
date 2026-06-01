@@ -29,7 +29,7 @@ Or simplest of all: open the `build-framework` repo on GitHub and copy-paste the
 Open `AGENTS.md` and fill the top section: project name, what it is, **Real-data or Demo** (if unsure → Real), hosting, database. Thirty seconds. Now every AI session knows your project and your rules.
 
 ## 4. Lock down secrets
-- Rename `.env.example` understanding: copy it to `.env.local` for your real values.
+- Copy `.env.example` to `.env.local` and put your real values there (this file is never committed).
 - Make sure your `.gitignore` contains:
   ```
   .env
@@ -50,5 +50,6 @@ When in doubt about any step, the detail lives in `references/`:
 - `01-project-setup.md` — setup specifics
 - `02-orchestration.md` — directing the AI, handoffs, reviewer loop
 - `03-verification-shipping.md` — how to verify, the production gate
-- `04-safety-rails.md` — the seven non-negotiables in full
+- `04-safety-rails.md` — the safety rails in full (incl. security baseline + safe-write checklist)
 - `05-incident-escalation.md` — when things break, when to call an engineer
+- `06-existing-project-mode.md` — applying the framework to a project that already exists
