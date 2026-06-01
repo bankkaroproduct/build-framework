@@ -17,9 +17,9 @@ cp /path/to/build-framework/templates/CLAUDE.md ./CLAUDE.md
 cp /path/to/build-framework/templates/env.example ./.env.example
 ```
 
-**Or pull just the templates straight from GitHub** (no full clone) — replace `<org>/build-framework`:
+**Or pull just the templates straight from GitHub** (no full clone):
 ```
-npx degit <org>/build-framework/templates ./_framework-templates
+npx degit bankkaroproduct/build-framework/templates ./_framework-templates
 # then move AGENTS.md, CLAUDE.md, env.example out of _framework-templates into your root
 ```
 

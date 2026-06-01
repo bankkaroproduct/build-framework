@@ -4,6 +4,17 @@ A way for non-engineers to ship real software with AI coding tools — without t
 
 It's **tool-agnostic** (works with Claude Code, Codex, Cursor, ChatGPT, or whatever's next — it speaks in roles, not tools) and **product-agnostic** (any web app with its own database and hosting fits).
 
+## Get it
+
+```
+git clone https://github.com/bankkaroproduct/build-framework.git
+```
+
+Or grab just the drop-in templates for a new project (no full clone):
+```
+npx degit bankkaroproduct/build-framework/templates ./_framework-templates
+```
+
 ## Start here
 
 1. **Read [`FRAMEWORK.md`](./FRAMEWORK.md)** — the whole approach in one page: three roles, the five-step loop, the seven safety rails. If you read one thing, read this.
