@@ -1,8 +1,10 @@
 # Build Framework
 
-A way for non-engineers to ship real software with AI coding tools — without the usual disasters (leaked secrets, lost data, broken apps shipped to real users, surprise bills).
+**A safe operating framework for building production-grade apps with AI coding tools — written for non-engineers (PMs, founders, prototypers).**
 
-It's **tool-agnostic** (works with Claude Code, Codex, Cursor, ChatGPT, or whatever's next — it speaks in roles, not tools) and **product-agnostic** (any web app with its own database and hosting fits).
+It stops the usual AI-coding disasters — leaked secrets, lost data, broken apps shipped to real users, surprise bills — by turning "ask the AI to build it and hope" into a repeatable process: plan → build → independent review → human gate → ship.
+
+**Works with:** Claude Code · Codex · Cursor · ChatGPT — or any AI coding tool that edits files in a local folder. It's **tool-agnostic** (speaks in roles, not tools) and **product-agnostic** (any web app with its own database and hosting fits). Graduating from no-code / Lovable / "vibe coding" to a real codebase? This is the missing operating manual.
 
 ## Get it
 
@@ -60,7 +62,9 @@ You direct, you don't code. Three roles do the work — a **Planner** decides wh
 
 ## Who this is for
 
-Anyone building production-grade MVPs with AI tools who isn't a professional engineer — PMs, founders, prototypers graduating from no-code/Lovable to real codebases with their own databases and hosting.
+Anyone building production-grade MVPs with AI tools who isn't a professional engineer — PMs, founders, and prototypers graduating from no-code, Lovable, or "vibe coding" to real codebases with their own databases and hosting. If you direct AI to write code you can't fully review yourself, this is for you.
+
+<sub>Keywords: AI coding · agentic development · Claude Code · Codex · Cursor · ChatGPT · LLM coding agents · vibe coding · no-code to code · MVP · guardrails · AI safety for builders · product manager engineering.</sub>
 
 ## License
 
