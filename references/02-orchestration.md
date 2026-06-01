@@ -91,6 +91,18 @@ A reviewer that only says "looks great" isn't reviewing. Push it: "what could go
 
 ---
 
+## Running more than one builder at once
+
+You usually won't — one task at a time is simpler and safer. But if you ever have two AI tools building in parallel (say Codex on one feature, Claude Code on another), follow these few rules or they'll overwrite each other:
+
+- **One branch per builder.** Each builder works on its own feature branch, never the same one.
+- **Non-overlapping scope.** Their `allowed_paths` must not overlap. Two builders editing the same file at once = guaranteed conflict. If a file area is contested, only one builder owns it at a time.
+- **One owner per area at a time.** Don't hand the same folder to a second tool until the first has committed and reported.
+- **Commit before handing off.** Never leave uncommitted changes in a shared folder and then point another tool at it — it'll build on a moving target.
+- **Merge one at a time, verify between.** Bring branches into `main` one by one, verifying after each. Don't merge two parallel branches together and hope.
+
+If two builders do collide, stop both, keep the one that's verified, and re-run the other from a fresh branch off the updated `main`. Don't try to hand-merge two AI-generated tangles.
+
 ## A realistic example flow
 
 1. You: "I want users to be able to reset their password."

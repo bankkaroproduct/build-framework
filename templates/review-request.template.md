@@ -4,7 +4,9 @@
 
 ## What changed
 - **Where to look:** <branch name / pull request link / files>
+- **Base branch + commit range:** <e.g. `main`..`feature/login-reset` — so the reviewer knows exactly what's in scope>
 - **What it's supposed to do:** <plain English>
+- **Risk level:** <low / medium / high — high = touches auth, payments, data, or external writes>
 
 ## What I want you to check (be critical, not polite)
 - [ ] Does it actually do what it's supposed to? Any obvious gaps?
@@ -26,5 +28,7 @@ Don't say "looks good." Structure your answer as:
 4. **Files changed unexpectedly** — anything touched beyond what the change description implied.
 5. **Risks, worst-first** — each with *where* it is and *why* it matters. Call out anything that should go to a human engineer.
 6. **Go / No-Go** — your recommendation: safe to ship, ship-with-fixes, or do-not-ship.
+
+**Hard rule:** if the risk level is medium/high AND you could not actually run the change, your recommendation defaults to **No-Go** — say "not verified, do not ship until someone runs it." A risky change that nobody ran is not ready, however good the code looks.
 
 If you genuinely find nothing serious, still fill in sections 1–4 so it's clear the review was real.

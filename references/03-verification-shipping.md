@@ -48,6 +48,9 @@ Production is the URL your real users hit. Rules:
 - You say "yes, deploy to production" explicitly, *after* Verify passed on the preview.
 - Production deploy happens by merging your tested branch into `main` (which triggers the hosting to update production).
 
+### Know your actual deploy trigger ("main ≠ production" check)
+The "merge to `main` → production updates" flow is the common default (Vercel/Netlify), but **don't assume it** — confirm how *your* project actually ships before you rely on it. Ask your AI, in plain English: *"When I merge to main, does that automatically deploy to real users, or is there another step?"* Some setups deploy from a different branch, need a manual "promote to production" click, or deploy by a separate process entirely. If you don't know your real trigger, you can ship by accident — or think you shipped when you didn't. Write the answer in `AGENTS.md` so every session knows it.
+
 ### The pre-production checklist
 Before you say "yes, ship to production":
 
