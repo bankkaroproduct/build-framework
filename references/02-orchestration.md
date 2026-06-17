@@ -68,6 +68,9 @@ AI tools install software packages casually — and every package is new code yo
 
 A "yes we need it, it's standard, it's maintained" is fine. Casually pulling in five obscure packages is not.
 
+### Don't let the AI invent things that don't exist
+A specific, common AI failure: it confidently uses an API endpoint, a config setting, an environment variable, or a library function that **doesn't actually exist** — it pattern-matched something plausible. The code looks right and breaks at runtime. Rule: the Builder must only reference things it has **confirmed are real** (checked the docs, the codebase, or the actual API). If your AI cites a method or endpoint you've never heard of, ask: *"have you verified that exists, or are you assuming?"* When in doubt, it should check, not guess.
+
 ---
 
 ## Step 4: Read the report — but don't trust it yet

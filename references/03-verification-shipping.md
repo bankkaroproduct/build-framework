@@ -24,6 +24,10 @@ An AI saying "✅ done," a passing test, and a green checkmark are all **claims*
 **Always:**
 - Get the **Reviewer** (a different AI) to look independently before anything important ships.
 
+### Judge by what broke, not by a number
+
+When you check tests or other automated results, compare against **what passed before**, not an absolute count. Test counts drift as the app grows — "I expected 50 passing and now there are 47" usually means tests were renamed or merged, not that something broke. The real failure signal is: **something that used to pass now fails.** Tell your AI to gate on regressions ("did anything that worked before stop working?"), not on hitting an exact number — otherwise you'll chase phantom failures or miss real ones behind a count that happens to match.
+
 ### The "committed ≠ live" trap
 
 When a Builder says "I committed the fix," that means it saved the work to a branch. It does **not** mean:

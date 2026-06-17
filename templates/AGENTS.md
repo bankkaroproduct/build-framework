@@ -16,6 +16,8 @@ This project follows the Build Framework. The human directing this work is **non
 
 **The loop:** Classify → Plan → Build → Verify → Ship-behind-a-gate. Plan before building. Verify with eyes on the running app, not by claiming "done."
 
+**Build the simplest thing that works.** Reuse existing code / stdlib / native features before adding a dependency. No speculative "might need it later" code. Mark any shortcut with a visible `TODO`. Never reference an API, config key, or function you haven't confirmed is real — verify, don't guess. (But never cut validation, security, or accessibility.) Apply the quality lenses in `references/09-quality-lenses.md` before calling a user-facing feature done.
+
 **Always-on safety rails — these are STOP signs. When about to cross one, pause and ask in plain English:**
 
 1. **Secrets** (keys, passwords, tokens, DB URLs) → environment variables only. NEVER in committed files or browser-visible code. → STOP before writing a secret anywhere but local `.env`.
@@ -32,7 +34,7 @@ This project follows the Build Framework. The human directing this work is **non
 
 **Explain in plain English first**, then leave a short technical trail (files changed, commands run + results, deps added, env vars added, migrations, known risks) so a future engineer isn't doing archaeology.
 
-**"Done" ≠ "works." "Committed" ≠ "live."** Confirm on the actual running app / production URL before reporting success.
+**"Done" ≠ "works." "Committed" ≠ "live."** Confirm on the actual running app / production URL before reporting success. Judge checks by **regressions** (did anything that worked before stop working?), not by hitting an exact test count.
 
 ## Project memory (keep this updated)
 

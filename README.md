@@ -42,6 +42,7 @@ references/
   06-existing-project-mode.md  Applying the framework to a repo that already exists.
   07-harden-your-repo.md      Optional automatic guards: secret scanning, branch protection.
   08-context-and-thread-management.md  When a chat goes slow/stale: fork cleanly, lose nothing.
+  09-quality-lenses.md        UI / UX / Copy / Code checklists so the result is good, not just safe.
 templates/
   AGENTS.md                   Drop in your project root. Many AI tools read it automatically.
   CLAUDE.md                   Thin pointer for Claude Code → follows AGENTS.md.
@@ -54,7 +55,15 @@ examples/
   worked-example.md           One feature, handoff → build → review → ship.
 .github/workflows/
   secret-scan.yml             Drop-in: blocks any push containing a leaked secret.
+account-level/
+  operating-rules.md          The condensed, audience-neutral spine to set as your global
+                              Claude/Codex config or online account instructions.
+  README.md                   How to install it globally (Claude Code, Codex) + online.
 ```
+
+## Pairs well with
+
+[`ponytail`](https://github.com/DietrichGebert/ponytail) — a "write less code" ruleset for AI agents. This framework governs *safety + process*; ponytail governs *code restraint*. They compose. See the Code-quality lens in `references/09-quality-lenses.md`.
 
 ## The idea in three sentences
 

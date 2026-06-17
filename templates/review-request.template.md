@@ -14,6 +14,7 @@
 - [ ] **External APIs:** does it write to (change/create/delete) any API we don't own? It shouldn't, without sign-off.
 - [ ] **Data safety:** any destructive database operation without a backup? Any personal/user data handled loosely?
 - [ ] **Failure cases:** what happens with bad input, an empty form, a network error?
+- [ ] **Quality lenses** (`references/09-quality-lenses.md`): for a user-facing change, does it pass the UI / UX / Copy checks (hierarchy, loading/empty/error states, clear button labels, helpful errors)? Is the code the simplest thing that works, with nothing invented that doesn't exist?
 - [ ] **Anything the builder might be blind to** — things that look fine but bite later.
 
 ## What I'm specifically worried about
