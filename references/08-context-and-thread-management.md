@@ -49,6 +49,12 @@ Don't wait for the thread to collapse. At natural milestones — a feature finis
 
 Now if the thread dies (or you just want a fresh one), you have a clean handoff to yourself.
 
+## Prevent rot, don't just recover from it (for bigger work)
+
+Everything above is *reactive* — fork the thread once it's stale. For a genuinely large task, be *proactive*: don't pour the whole thing into one thread and wait for it to degrade. Instead, **split it up front into smaller sub-tasks, each done in its own fresh-context session**, coordinated through your files (`AGENTS.md` memory + `checkpoint.md` + per-task handoffs). Research one part in a clean session, write the finding to a file; plan the next in another clean session reading that file; build each piece fresh. Each session starts sharp because it carries only what its file hands it, not the accumulated debris of everything before.
+
+This is how large multi-step builds stay coherent — the durable files are the shared memory, and no single session has to hold it all. (It's the same discipline this framework was *built* with.)
+
 ---
 
 ## Starting a fresh thread cleanly (the resume)

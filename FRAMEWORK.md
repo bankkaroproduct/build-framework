@@ -40,8 +40,16 @@ Before anything, answer one question: **does this app touch real users or real d
 
 **The sharper rule:** "no public users yet" does **not** mean "safe." If the app touches **real data, real company infrastructure, or real external APIs** — even an internal tool only you use — treat it as **Real**. A private beta with five friends, an admin tool wired to a real database, a prototype already calling a paid API: all **Real**. If you're not sure, it's Real. See `references/01-project-setup.md`.
 
-### 2. Plan
-Get the AI to write down *what* it's going to build **before** it writes code. A good plan names the smallest useful slice — not the whole dream, just the next shippable piece. Make the AI explain, in plain English, anything that costs money or touches user data. You approve the plan before building starts.
+### 2. Plan — *then challenge the plan*
+Get the AI to write down *what* it's going to build **before** it writes code. A good plan names the smallest useful slice — not the whole dream, just the next shippable piece. Make the AI explain, in plain English, anything that costs money or touches user data.
+
+Then do the step almost everyone skips — **challenge the plan before you approve it.** Every "build assistant" verifies the *code* against the plan; almost none ask whether the *plan itself* is sound. Run a quick Devil's-Advocate pass (ideally in a fresh/cold session — see the Reviewer trick, but pointed upstream) on four questions:
+- **Is this even the right thing to build?** What problem does it actually solve?
+- **Is there a simpler way** that gets 80% of the value?
+- **What assumption is this resting on** — and what breaks if that assumption is wrong?
+- **What's the riskiest part**, and should that be proven first?
+
+This costs two minutes and is the cheapest place to kill a bad idea — far cheaper than building it well and discovering it was wrong. Only *then* approve the plan and build.
 
 ### 3. Build
 The Builder works from a handoff (`templates/handoff.template.md`). The handoff says what to touch, what NOT to touch, and how you'll know it worked. The Builder reports back what it actually did. See `references/02-orchestration.md`.

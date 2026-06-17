@@ -22,8 +22,9 @@ When you want something built, don't say "build X" and walk away. First, get the
 - Ask for **the smallest useful slice**. Not "build the whole app" — "build just the login screen, working, nothing else." Small slices are easier to verify and easier to fix.
 - Make the Planner state, in plain English: what it will change, anything that costs money, anything that touches user data, anything it's unsure about.
 - **You approve the plan before code is written.** If the plan is vague, the code will be worse.
+- **Challenge the plan before you approve it.** Every framework checks the code against the plan; almost none check the plan. Run a quick Devil's-Advocate pass — ideally in a *fresh/cold session* so it isn't invested in the idea — asking: is this the right thing to build? is there a simpler way? what assumption is this resting on, and what breaks if it's wrong? what's the riskiest part? It's the same cold-start adversarial trick we use for review (`TOOL_MATRIX.md`), pointed *upstream* at the idea instead of downstream at the code. Two minutes here saves building the wrong thing beautifully.
 
-A plan you understood and approved is worth ten clever prompts.
+A plan you understood, challenged, and approved is worth ten clever prompts.
 
 ---
 
