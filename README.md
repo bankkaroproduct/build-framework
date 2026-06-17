@@ -43,6 +43,7 @@ references/
   07-harden-your-repo.md      Optional automatic guards: secret scanning, branch protection.
   08-context-and-thread-management.md  When a chat goes slow/stale: fork cleanly, lose nothing.
   09-quality-lenses.md        UI / UX / Copy / Code checklists so the result is good, not just safe.
+  10-companion-rulesets.md    Curated AI-agent rulesets to plug in per discipline (+ how to adopt safely).
 templates/
   AGENTS.md                   Drop in your project root. Many AI tools read it automatically.
   CLAUDE.md                   Thin pointer for Claude Code → follows AGENTS.md.
@@ -63,7 +64,7 @@ account-level/
 
 ## Pairs well with
 
-[`ponytail`](https://github.com/DietrichGebert/ponytail) — a "write less code" ruleset for AI agents. This framework governs *safety + process*; ponytail governs *code restraint*. They compose. See the Code-quality lens in `references/09-quality-lenses.md`.
+This framework governs *safety + process*. It composes with discipline-specific AI-agent rulesets — [`ponytail`](https://github.com/DietrichGebert/ponytail) (code restraint), [`agent-style`](https://github.com/yzhao062/agent-style) (writing), [`A11Y.md`](https://github.com/fecarrico/A11Y.md) (accessibility), [`cursor-security-rules`](https://github.com/matank001/cursor-security-rules) (security), and more. **`references/10-companion-rulesets.md`** has the curated list per discipline, the honest gaps, and — importantly — how to adopt one safely (rules files are a supply-chain vector; review and pin before you trust).
 
 ## The idea in three sentences
 
