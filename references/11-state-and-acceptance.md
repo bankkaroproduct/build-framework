@@ -1,12 +1,12 @@
-# 05 — State, Acceptance, and the Restart Trap
+# 11 — State, Acceptance, and the Restart Trap
 
 How to keep a build moving to a real "yes" — and avoid the most common way AI-assisted projects stall: doing a lot of work that never actually finishes.
 
 ---
 
-## The core rule: acceptance is a human, on the real running app
+## The core rule: acceptance is a human, on the real result
 
-Every workstream needs one named human acceptance authority. That person looks at the actual running surface — the real app, the real device, the real API — and says "yes, this is done."
+Every workstream needs one named human acceptance authority. That person looks at the actual result in the place it will really be used — the running app on a real device, the live API, the published page, the finished document, the shipped dataset — and says "yes, this is done."
 
 Nothing else counts. None of these are acceptance:
 
@@ -69,8 +69,8 @@ You can start with a very simple version:
 Goal: let users reset their password
 
 Active: password-reset email flow
-Builder: Codex / feature/password-reset
-Gate: Verify (preview URL tested, awaiting human acceptance)
+Builder: your build tool, on branch feature/password-reset
+Gate: Verify (preview tested, awaiting human acceptance)
 Accepted: no
 
 Parked: —
