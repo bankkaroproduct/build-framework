@@ -44,6 +44,8 @@ references/
   08-context-and-thread-management.md  When a chat goes slow/stale: fork cleanly, lose nothing.
   09-quality-lenses.md        UI / UX / Copy / Code checklists so the result is good, not just safe.
   10-companion-rulesets.md    Curated AI-agent rulesets to plug in per discipline (+ how to adopt safely).
+  11-state-and-acceptance.md  Acceptance authority, the one-item-at-a-time rule, the state file,
+                              and the restart trap — how work actually reaches "done".
 templates/
   AGENTS.md                   Drop in your project root. Many AI tools read it automatically.
   CLAUDE.md                   Thin pointer for Claude Code → follows AGENTS.md.

@@ -60,11 +60,13 @@ The Builder works from a handoff (`templates/handoff.template.md`). The handoff 
 - If it's an API or backend, actually call it and look at the response.
 - Get the Reviewer to look at the change independently.
 
-A green checkmark, a passing test, or an AI saying "✅ done" is **not** proof. Your own eyes on the running app is proof. See `references/03-verification-shipping.md`.
+A green checkmark, a passing test, or an AI saying "✅ done" is **not** proof. Your own eyes on the running app is proof. The Reviewer's go is not the final gate — it is a pre-condition for the human acceptance authority to close it. See `references/03-verification-shipping.md`.
 
 ### 5. Ship — behind a gate
 - **Preview deploys** (a test URL nobody real uses) → ship freely, that's what they're for.
 - **Production** (the URL real users hit) → **never automatic**. You explicitly say "yes, push to production" every single time, after Verify passed.
+
+**Acceptance authority.** Every workstream needs one named human who accepts the result on the actual running surface — the real app, the real device, the real API. Name this person before implementation starts. Review approved, tests passing, merged, and shipped are all necessary steps; none of them are the acceptance. The human authority closes the gate. See `references/11-state-and-acceptance.md`.
 
 See `references/03-verification-shipping.md`.
 
